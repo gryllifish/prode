@@ -5,13 +5,13 @@ This is a web application built with Python, JavaScript, and Flask, as the final
 To install the app, you need to have Python and Flask installed on your system. You can clone the repository by running the following command in your terminal:
 
 ```
-git clone https://github.com/yourusername/world-cup-betting-app.git
+git clone https://github.com/gryllifish/prode
 ```
 
 Then, navigate to the project directory and install the required dependencies using pip:
 
 ```
-cd world-cup-betting-app
+cd Final
 pip install -r requirements.txt
 ```
 
