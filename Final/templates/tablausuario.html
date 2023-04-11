@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link href="/templates/style.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block title %}
+    APUESTAS
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h5>Usuario: {{ dataUser[0]['username'] }}</h5>
+    </div>
+                <h4 class="my-4">FASE DE GRUPOS</h4>
+                <table style="width: 50%" class="tabla table table-sm m-auto">
+                    <thead>
+                        <tr>
+                        <th scope="row"></th>
+                        <th scope="row"></th>
+                        <th scope="row">Resultado</th>
+                        <th scope="row">Predicción</th>
+                        <th scope="row"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+
+                        <tr class="bg-warning">
+                        <th scope="row"></th>
+                        <th scope="row">GRUPO A</th>
+                        <th scope="row"></th>
+                        <th scope="row"></th>
+                        <th scope="row"></th>
+                        </tr>
+                        {% for match in fix %}
+                        {% if loop.index0 == 6 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO B</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                        </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 12 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO C</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 18 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO D</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 24 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO E</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 30 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO F</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 36 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO G</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+
+                        {% if loop.index0 == 42 %}
+                        <tr class="bg-warning">
+                            <th scope="row"></th>
+                            <th scope="row">GRUPO H</th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            <th scope="row"></th>
+                            </tr>
+                        {% endif %}
+                        {% if match['HomeTeamScore'] == None %}
+                        <tr>
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >-</td>
+                            <td>{{ match['userHome'] }}-{{match['userAway'] }}</td>
+                            <td></td>
+                        </tr>
+                        {% elif match['HomeTeamScore'] == match['userHome'] and match['AwayTeamScore'] == match['userAway'] %}
+                        <tr class="tablaColor">
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td><span class="material-symbols-outlined">
+                                done_all
+                                </span></td>
+                        </tr>
+                        {% elif match['userHome'] != None and match['HomeTeamScore'] < match['AwayTeamScore'] and match['userHome'] < match['userAway'] %}
+                        <tr class="tablaColorCasi">
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td><span class="material-symbols-outlined">
+                                done
+                                </span></td>
+                        </tr>
+                        {% elif match['userHome'] != None and match['HomeTeamScore'] > match['AwayTeamScore'] and match['userHome'] > match['userAway'] %}
+                        <tr class="tablaColorCasi">
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td><span class="material-symbols-outlined">
+                                done
+                                </span></td>
+                        </tr>
+                        {% elif match['userHome'] != "-" and match['HomeTeamScore'] == match['AwayTeamScore'] and match['userHome'] == match['userAway'] and match['userHome'] != match['HomeTeamScore'] %}
+                        <tr class="tablaColorCasi">
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td><span class="material-symbols-outlined">
+                                done
+                                </span></td>
+                        </tr>
+                        {% elif match['userHome'] != "-" and match['HomeTeamScore'] == match['AwayTeamScore'] and match['userHome'] == match['userAway'] and match['userHome'] == match['HomeTeamScore'] %}
+                        <tr class="tablaColor">
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td><span class="material-symbols-outlined">
+                                done_all
+                                </span></td>
+                        </tr>
+
+                            {% else %}
+                            <tr>
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td >{{ match['HomeTeamScore'] }} - {{match['AwayTeamScore'] }}</td>
+                            <td>{{ match['userHome'] }} - {{match['userAway'] }}</td>
+                            <td></td>
+
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+
+{% endblock %}

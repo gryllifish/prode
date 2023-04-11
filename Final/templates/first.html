@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<div class="section mt-5">
+<section class="counter m-auto">
+    <p class="faltan">Faltan</p>
+<ul id="count-down">
+    <li class="days"></li>
+    <li class="hours"></li>
+    <li class="minutes"></li>
+    <li class="seconds"></li>
+</ul>
+</section>
+<table class="table table-sm table-borderless" style="color: white; max-width:60%;">
+    <tr>
+        <td><span class="material-symbols-outlined" style="font-size: 3rem; color: #FFC107;">
+            face_5
+            </span></td>
+        <td><h5>Creá un nombre de usuario y contraseña</h5></td>
+    </tr>
+    <tr>
+        <td><span class="material-symbols-outlined" style="font-size: 3rem; color: #FFC107;">
+            star_rate
+            </span></td>
+        <td><h5>Apostá por el campeón</h5></td>
+    </tr>
+    <tr>
+        <td><span class="material-symbols-outlined" style="font-size: 3rem; color: #FFC107;">
+            sports_soccer
+            </span></td>
+        <td><h5>Apostá quién va a ser el goleador</h5></td>
+    </tr>
+    <tr>
+        <td><span class="material-symbols-outlined" style="font-size: 3rem; color: #FFC107;">
+            scoreboard
+            </span></td>
+        <td><h5>Apostá por los resultados de los partidos</h5></td>
+    </tr>
+    <tr>
+        <td><span class="material-symbols-outlined" style="font-size: 3rem; color: #FFC107;">
+            paid
+            </span></td>
+        <td><h5>Ganá el pozo acumulado</h5></td>
+    </tr>
+</table>
+<a href="/login" class="btn btn-warning my-3" style="width:20%">Entrar</a>
+<a href="/register" class="btn btn-warning my-3" style="width:20%">Registrarme</a>
+
+
+
+<script src="/static/tiempo.js"></script>
+</div>
+{% endblock %}

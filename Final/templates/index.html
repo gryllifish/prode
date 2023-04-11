@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link href="/templates/style.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    INDEX
+{% endblock %}
+
+{% block main %}
+
+<div class="container index p-2">
+
+    <div class="row row-eq-height gx-1 align-items-start">
+        <div class="col-sm">
+
+            <div class="card" style="width:18rem; height: 29rem;">
+                <div class="imgContainer">
+                    <img src="/static/messisentado.jpeg" class="card-img-top" alt="imagenMundial">
+                </div>
+                <h4 class="cardText mt-3">Apuestas anticipadas</h4>
+                <span class="material-symbols-outlined" style="color:#FFC107;">sports_soccer</span>
+                <p class="cardText">15 puntos cada uno</p>
+                <div class="section m-2">
+                    <form action="/" method="POST">
+                        <select class="selectpicker countrypicker" name="seleccion">
+                            <option selected>Elegi al campeón</option>
+                            {% for team in teams %}
+                            <option value="{{ team }}">{{ team }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="section m-2">
+                    <select class="selectpicker" data-live-search="true" placeholder= 'Elegi al goleador' name="goleador" style="width:45%">
+                        {% for jugador in scorer %}
+                        <option data-tokens="{{ jugador }}">{{jugador }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn btn-warning my-3 m-auto" style="width:50%" type="submit">Elegir</button>
+                </form>
+            </div>
+        </div>
+
+
+        {% set fecha = true %}
+        {% if date == "2022-11-19" %}
+        {% set fecha = false %}
+        {% endif %}
+        {% if fecha == true %}
+        <div class="col-sm">
+
+            <div class="card" style="width:18rem; height: 29rem">
+                <div class="imgContainer">
+                    <img src="/static/messimex.jpg" class="card-img-top">
+                    </div>
+                <h4 class="cardText mt-3">Fase de Grupos</h4>
+                <span class="material-symbols-outlined" style="color:#FFC107;">sports_soccer</span>
+                <p class="cardText" style="margin-bottom: 0; margin-top: 6%;">2 puntos si adivinás ganador</p>
+                <p class="cardText">4 puntos si adivinás resultado exacto</p>
+                <a class="btn btn-warning my-3 m-auto" style="width:60%" href= "/primeraronda">Fase de grupos</a>
+             </div>
+        </div>
+
+
+        {% endif %}
+        {% if date == "2022-12-03" %}
+        <div class="col">
+            <p class="mt-4 p-3">Apostá Octavos! Buena suerte!</p>
+            <a class="border rounded bg-warning link-light text-decoration-none m-2 p-2" href= "/octavos">Octavos de Final</a>
+            <p>.</p>
+        </div>
+        {% endif %}
+
+        {% if date == "2022-12-09" %}
+        <div class="col">
+            <p class="mt-4 p-3">Apostá Cuartos! Buena suerte!</p>
+            <a class="border rounded bg-warning link-light text-decoration-none m-2 p-2" href= "/cuartos">Cuartos de Final</a>
+            <p>.</p>
+        </div>
+        {% endif %}
+
+        {% if date == "2022-12-13" %}
+        <div class="col">
+            <p class="mt-4 p-3">Apostá Semifinales! Buena suerte!</p>
+            <a class="border rounded bg-warning link-light text-decoration-none m-2 p-2" href= "/semis">Semifinales</a>
+            <p>.</p>
+        </div>
+        {% endif %}
+        {% if date == "2022-12-18" %}
+        <div class="col">
+            <p class="mt-4 p-3">Apostá Semifinales! Buena suerte!</p>
+            <a class="border rounded bg-warning link-light text-decoration-none m-2 p-2" href= "/semis">Semifinales</a>
+            <p>.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container index p-2">
+        <div class="col-sm">
+            <div class="section text-center">
+                <table style="width:25rem; height: 29rem" class="tabla tablaPos table table-fixed table-sm rounded">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2">POSICIONES</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="col">USUARIO </th>
+                            <th scope="col">PUNTOS</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in usuarios %}
+                        <tr>
+                            {% if user["username"] ==  username   %}
+                            <td class="bold"><a class="tablaLink" href="/tablausuario/{{ user['username'] }}">{{ user["username"] }}</a></td>
+                            {% else %}
+                            <td><a class="tablaLink" href="/tablausuario/{{ user['username'] }}">{{ user["username"] }}</a></td>
+                            {% endif %}
+
+                            <td>{{ user["puntos"] }}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+<div class="col-sm">
+    <div class="card flex-column overflow-auto" style="width:18rem; height: 29rem">
+        <div class="imgContainer">
+        </div>
+        <table class="tabla tablaPos table table-fixed rounded" style="width:10rem; height: 29rem">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="4" style="width:50%:">AHORA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TODO: Loop through the database entries to display them in this table -->
+                {% if ahora != "bilbo" %}
+                {% for match in ahora %}
+                <tr>
+                    {% if match['home_team']['goals'] == None %}
+                    <td>{{ match['home_team']['name'] }}</td>
+                    <td class="score"> - </td>
+                    <td>{{ match['away_team']['name'] }}</td>
+                    <td class="score"> - </td>
+                    {% else %}
+                    <td class="score"> {{ match['home_team']['goals'] }}</td>
+                    <td>{{ match['away_team']['name'] }}</td>
+                    <td class="score">{{ match['away_team']['goals'] }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>

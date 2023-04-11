@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<div class="section mt-5">
+<section class="counter">
+    <p class="faltan">Faltan</p>
+<ul id="count-down">
+    <li class="days"></li>
+    <li class="hours"></li>
+    <li class="minutes"></li>
+    <li class="seconds"></li>
+</ul>
+</section>
+
+
+    <form action="/login" method="post" class="mt-5">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Nombre de usuario" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Contraseña" type="password">
+        </div>
+        <button class="btn btn-warning my-3" type="submit">Entrar</button>
+    </form>
+<script src="/static/tiempo.js"></script>
+</div>
+{% endblock %}

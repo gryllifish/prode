@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link href="/templates/style.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block title %}
+    PRIMERA RONDA
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h1>Fixture</h1>
+        <h2>Fase de Grupos</h2>
+    </div>
+    <form method="POST" action="/primeraronda">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="mt-4">GRUPO A</h4>
+                <table style="width: 100%" class="tab table table-striped table-sm m-auto">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the database entries to display them in this table -->
+
+                        {% for match in groupA %}
+                        <tr>
+                            <td>{{ match['HomeTeam'] }}</td>
+                            <td><input autocomplete="off" class="pruebaInput" name="groupAHome{{ loop.index0 }}" id="formGroupA{{ loop.index0 }}"></td>
+                            <td>{{ match['AwayTeam'] }}</td>
+                            <td><input autocomplete="off" class="pruebaInput" name="groupAAway{{ loop.index0 }}" id="formGroupA{{ loop.index0 }}"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="col-md-6">
+                <h4 class="mt-4">GRUPO B</h4>
+
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+
+                            {% for match in groupB %}
+                                <tr>
+                                    <td>{{ match['HomeTeam'] }}</td>
+                                    <td><input autocomplete="off" class="pruebaInput" name="groupBHome{{ loop.index0 }}"></td>
+                                    <td>{{ match['AwayTeam'] }}</td>
+                                    <td><input autocomplete="off" class="pruebaInput" name="groupBAway{{ loop.index0 }}"></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO C</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupC %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupCHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupCAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO D</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupD %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupDHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupDAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO E</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupE %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupEHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupEAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO F</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupF %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupFHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupFAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO G</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupG %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupGHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupGAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mt-4">GRUPO H</h4>
+                    <table style="width: 100%" class="tab table table-sm table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <!-- TODO: Loop through the database entries to display them in this table -->
+                            {% for match in groupH %}
+                            <tr>
+                                <td>{{ match['HomeTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupHHome{{ loop.index0 }}"></td>
+                                <td>{{ match['AwayTeam'] }}</td>
+                                <td><input autocomplete="off" class="pruebaInput" name="groupHAway{{ loop.index0 }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button class="btn btn-warning my-3" style="width:20%" type="submit">Apostar</button>
+            </form>
+
+
+
+{% endblock %}
+
